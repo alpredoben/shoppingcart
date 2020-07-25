@@ -4,13 +4,13 @@
   "description": "Sample E-Commerce Shopping Cart Using React, Redux, Express And MongoDb",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon --experimental-modules src/index.mjs"
   },
   "author": "Ruben Alpredo Tampubolon",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.9.25"
   },

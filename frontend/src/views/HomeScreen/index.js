@@ -1,11 +1,22 @@
-import React from 'react';
-import data from '../../data';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import {useSelector, useDispatch} from 'react-redux';
+import { GetProductList } from '../../redux/actions';
+
 
 function HomeScreen(props) {
-    return (
+    const {products, loading, errors} = useSelector(state => state.ProductListReducer);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(GetProductList());
+        return () => {}
+    }, []);
+
+
+    return loading ? <div>Loading...</div> : errors ? <div>Error..</div> : (
         <ul className="products">
-            {data.products.map((product, index) => (
+            {products.map((product, index) => (
             <li key={index}>
                 <div className="product">
                 <img
