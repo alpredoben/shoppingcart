@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import routes from './routes';
-import data from "./data";
 
 
 function App() {

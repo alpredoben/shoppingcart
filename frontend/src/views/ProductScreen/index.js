@@ -3,14 +3,17 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { GetDetailProduct } from '../../redux/actions';
 function ProductScreen(props) {
-
+    const productId = parseInt(props.match.params.id)
     const [qty, setQty] = useState(1)
 
     const { product, loading, errors } = useSelector(state => state.ProductDetailsReducer);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(GetDetailProduct(parseInt(props.match.params.id)));
+
+        if(productId !== null) {
+            dispatch(GetDetailProduct(productId));
+        }
         
         return () => {
         }
@@ -60,7 +63,7 @@ function ProductScreen(props) {
                                 <li>
                                     Status: {product.totalStock > 0 ? "In Stock" : "Out Stock"}
                                 </li>
-                                <li>
+                                 <li>
                                     Qty: <select value={qty} onChange={(e) => { setQty(e.target.value)}}>
                                     {
                                         [...Array(product.totalStock).keys()].map( x => 

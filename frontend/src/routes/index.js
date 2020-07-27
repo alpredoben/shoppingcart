@@ -1,5 +1,5 @@
 import React from 'react';
-import {HomeScreen, ProductScreen} from '../views';
+import {HomeScreen, ProductScreen, CartScreen} from '../views';
 
 const routes = [
     {
@@ -14,6 +14,12 @@ const routes = [
         name: 'Product',
         component: ProductScreen,
     },
+    {
+        path: '/cart/:id?',
+        exact: true,
+        name: 'Cart',
+        component: CartScreen
+    }
 ];
 
 export default routes;
