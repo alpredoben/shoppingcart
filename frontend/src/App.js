@@ -1,9 +1,14 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import routes from './routes';
+import { useSelector } from "react-redux";
 
 
 function App() {
+  const {authUser} = useSelector(state => state.UserLoginReducer);
+
+  console.log(authUser);
+  
   const openMenu = () => {
     document.querySelector(".sidebar").classList.add("open");
   };
@@ -30,12 +35,26 @@ function App() {
         <header className="header">
           <div className="brand">
             <button onClick={openMenu}>&#9776;</button>
-            <Link to="/">Amazona</Link>
+            <Link to="/">BS-Shop</Link>
+           
           </div>
+
+          {
+            authUser && 
+            <div className="welcome-head">
+              Welcome {authUser.user.name}
+            </div>
+          }
+          
 
           <div className="header-links">
             <a href="">Cart</a>
-            <a href="">Sign In</a>
+            {
+              authUser? <Link to="/profile">Profile</Link>:<Link to="/login">Sign In</Link>
+            }
+            {
+              authUser && <Link to="/logout">Sign Out</Link>
+            }
           </div>
         </header>
 

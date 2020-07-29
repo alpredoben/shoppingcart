@@ -1,7 +1,17 @@
 import React from 'react';
-import {HomeScreen, ProductScreen, CartScreen} from '../views';
+import {HomeScreen, ProductScreen, CartScreen, LoginScreen, RegisterScreen, UserProfileScreen} from '../views';
 
 const routes = [
+    {
+        path: '/login',
+        name: 'Login',
+        component: LoginScreen
+    },
+    {
+        path: '/register',
+        name: 'Register',
+        component: RegisterScreen
+    },
     {
         path: '/',
         exact: true,
@@ -10,16 +20,20 @@ const routes = [
     },
     {
         path: '/products/:id',
-        exact: true,
         name: 'Product',
         component: ProductScreen,
     },
     {
         path: '/cart/:id?',
-        exact: true,
         name: 'Cart',
         component: CartScreen
-    }
+    },
+    {
+        path: '/profile',
+        name: 'UserProfile',
+        component: UserProfileScreen
+    },
+
 ];
 
 export default routes;

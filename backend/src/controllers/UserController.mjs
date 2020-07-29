@@ -49,7 +49,7 @@ export default {
                 success: true, 
                 token: token, 
                 message: 'Login successfully',
-                auth: true
+                user
             });
 
         } catch (error) {
@@ -61,6 +61,15 @@ export default {
     signUp: async (req, res) => {
         try {
             const {name, email, password} = req.body;
+
+            const findUser = await User.findOne({ email });
+
+            if(findUser) {
+                return res.status(400).send({ 
+                    success: false, 
+                    message: `Email ${email} has registrated before`
+                });
+            }
             
             const user = new User({
                 name,

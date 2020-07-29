@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import routers from './routers/index.mjs';
 
+import data from './data.mjs';
+
 const app = express();
 const PORT = process.env.LISTEN_PORT || '9000'
 dotenv.config();
